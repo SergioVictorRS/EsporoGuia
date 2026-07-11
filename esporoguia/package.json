@@ -14,10 +14,7 @@
     "react-dom": "19.2.4",
     "gsap": "^3.12.5",
     "framer-motion": "^12.0.0",
-    "lenis": "^1.2.3",
-    "lucide-react": "^0.456.0",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^2.5.4"
+    "lucide-react": "^0.456.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -25,7 +22,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
-    "postcss": "^8",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
