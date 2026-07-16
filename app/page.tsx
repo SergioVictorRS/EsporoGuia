@@ -11,10 +11,12 @@ import { Help } from "./sections/Help";
 import { Footer } from "./components/Footer";
 import { Environment } from "./sections/Environment"; 
 import { OneHealth } from "./sections/OneHealth";
+import ReadingProgress from "./components/ReadingProgress";
 
 export default function Home() {
   return (
     <main className="pt-20">
+      <ReadingProgress />
       <Hero />
       <WhatIs />
       <Transmission />

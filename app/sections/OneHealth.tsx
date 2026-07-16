@@ -1,7 +1,7 @@
 // app/sections/OneHealth.tsx
 "use client";
 
-import { Heart, Users, PawPrint, Globe } from "lucide-react";
+import { Heart, Users, PawPrint, Globe, Leaf } from "lucide-react";
 
 export function OneHealth() {
   return (
@@ -21,42 +21,104 @@ export function OneHealth() {
           </p>
         </div>
 
-        {/* Círculo Conceitual */}
+        {/* Círculo Conceitual Melhorado */}
         <div className="flex justify-center mb-20">
-          <div className="relative w-80 h-80">
-            <div className="absolute inset-0 border-2 border-dashed border-emerald-700 rounded-full"></div>
+          <div className="relative w-[420px] h-[420px] flex items-center justify-center">
+            {/* Círculo principal */}
+            <div className="absolute inset-0 border-4 border-dashed border-emerald-700/70 rounded-full"></div>
             
             {/* Centro */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-white rounded-full flex items-center justify-center shadow-xl">
+            <div className="relative z-10 w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-2xl border-4 border-emerald-600">
               <div className="text-center">
-                <div className="text-4xl">🌍</div>
-                <p className="text-xs font-semibold text-emerald-950 mt-1">ONE HEALTH</p>
+                <div className="text-6xl mb-1">🌍</div>
+                <p className="text-xs font-bold tracking-widest text-emerald-950">ONE HEALTH</p>
               </div>
             </div>
 
-            {/* Humano */}
-            <div className="absolute top-8 left-1/2 -translate-x-1/2 text-center">
-              <div className="w-20 h-20 bg-white/10 backdrop-blur rounded-3xl flex items-center justify-center text-5xl mb-3 mx-auto border border-white/30">🧍‍♂️</div>
-              <p className="text-sm font-medium">Saúde Humana</p>
+            {/* Linhas de conexão */}
+            <div className="absolute inset-0">
+              <svg className="w-full h-full -rotate-45" viewBox="0 0 400 400">
+                <circle cx="200" cy="200" r="140" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="8 8" className="text-emerald-700/50" />
+              </svg>
             </div>
 
-            {/* Animal */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
-              <div className="w-20 h-20 bg-white/10 backdrop-blur rounded-3xl flex items-center justify-center text-5xl mb-3 mx-auto border border-white/30">🐱</div>
-              <p className="text-sm font-medium">Saúde Animal</p>
+            {/* Saúde Humana */}
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-center">
+              <div className="flex flex-col items-center">
+                <div className="w-20 h-20 bg-emerald-900/70 backdrop-blur-md rounded-2xl flex items-center justify-center text-5xl mb-3 border border-emerald-400/30 shadow-xl">
+                  👤
+                </div>
+                <p className="font-semibold text-lg text-emerald-100">Saúde Humana</p>
+              </div>
+            </div>
+
+            {/* Saúde Animal */}
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-center">
+              <div className="flex flex-col items-center">
+                <div className="w-20 h-20 bg-emerald-900/70 backdrop-blur-md rounded-2xl flex items-center justify-center text-5xl mb-3 border border-emerald-400/30 shadow-xl">
+                  🐱
+                </div>
+                <p className="font-semibold text-lg text-emerald-100">Saúde Animal</p>
+              </div>
             </div>
 
             {/* Meio Ambiente */}
-            <div className="absolute left-8 top-1/2 -translate-y-1/2 text-center">
-              <div className="w-20 h-20 bg-white/10 backdrop-blur rounded-3xl flex items-center justify-center text-5xl mb-3 mx-auto border border-white/30">🌿</div>
-              <p className="text-sm font-medium">Meio Ambiente</p>
+            <div className="absolute left-[-60px] top-1/2 -translate-y-1/2 text-center">
+              <div className="flex flex-col items-center">
+                <div className="w-20 h-20 bg-emerald-900/70 backdrop-blur-md rounded-2xl flex items-center justify-center text-5xl mb-3 border border-emerald-400/30 shadow-xl">
+                  🌿
+                </div>
+                <p className="font-semibold text-lg text-emerald-100">Meio Ambiente</p>
+              </div>
             </div>
 
-            {/* Conexão */}
-            <div className="absolute right-8 top-1/2 -translate-y-1/2 text-center">
-              <div className="w-20 h-20 bg-white/10 backdrop-blur rounded-3xl flex items-center justify-center text-5xl mb-3 mx-auto border border-white/30">🔄</div>
-              <p className="text-sm font-medium">Interconexão</p>
+            {/* Interconexão (opcional, mantido para completar o conceito) */}
+            <div className="absolute right-[-50px] top-1/2 -translate-y-1/2 text-center opacity-75">
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center text-4xl border border-white/30">
+                  🔄
+                </div>
+                <p className="text-sm font-medium mt-2 text-emerald-400">Interconexão</p>
+              </div>
             </div>
+          </div>
+        </div>
+
+        {/* Resto do conteúdo permanece igual (apenas pequenas melhorias visuais) */}
+        <div className="max-w-4xl mx-auto mb-20">
+          <h3 className="text-3xl font-semibold text-center mb-8 text-emerald-200">
+            Por que a esporotricose é um problema de saúde única?
+          </h3>
+          <div className="prose prose-invert max-w-none text-emerald-100 leading-relaxed text-lg">
+            <p>
+              A esporotricose não afeta apenas uma pessoa ou um animal. Ela envolve a interação entre diferentes componentes do nosso cotidiano. 
+              Quando um gato adoece, toda a família pode ser impactada. Da mesma forma, ambientes contaminados e a falta de informação dificultam o controle da doença.
+            </p>
+            <p>
+              Por isso, o enfrentamento da esporotricose depende da atuação conjunta de profissionais de diferentes áreas e da participação da população.
+            </p>
+            
+            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 my-10">
+              <p className="font-medium text-emerald-200 mb-4">A Saúde Única reconhece que:</p>
+              <ul className="space-y-3 text-emerald-100">
+                <li className="flex gap-3">
+                  <span className="text-emerald-400 mt-1">•</span>
+                  <span>A saúde das pessoas depende da saúde dos animais.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-emerald-400 mt-1">•</span>
+                  <span>A saúde dos animais depende de um ambiente saudável.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-emerald-400 mt-1">•</span>
+                  <span>Um ambiente saudável protege toda a comunidade.</span>
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-center text-lg">
+              Quando esses três elementos trabalham juntos, reduzimos a transmissão da doença e promovemos mais qualidade de vida para todos.
+            </p>
           </div>
         </div>
 

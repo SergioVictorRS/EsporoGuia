@@ -1,7 +1,8 @@
-// app/sections/Help.tsx
+// app/sections/Help.tsx (modificado)
 "use client";
 
 import { Phone, MapPin, Clock } from "lucide-react";
+import Link from "next/link";
 
 export function Help() {
   return (
@@ -12,7 +13,7 @@ export function Help() {
             Quando procurar ajuda?
           </h2>
           <p className="text-emerald-300 text-xl max-w-2xl mx-auto">
-            Não espere as lesões piorarem. Quanto antes, melhor o resultado.
+            Não espere as lesões piorarem.
           </p>
         </div>
 
@@ -103,12 +104,12 @@ export function Help() {
               A esporotricose tem excelente resposta ao tratamento quando diagnosticada cedo.
             </p>
             
-            <a 
-              href="#"
+            <Link 
+              href="/ajuda"
               className="inline-block bg-white text-emerald-950 hover:bg-amber-100 font-semibold px-10 py-4 rounded-2xl text-lg transition"
             >
               Encontrar ajuda perto de mim →
-            </a>
+            </Link>
           </div>
         </div>
       </div>

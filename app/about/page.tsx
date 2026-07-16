@@ -26,8 +26,10 @@ export default function About() {
 
         <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
           <p>
-            Este site educativo foi criado com o objetivo de explicar de forma clara, visual e acessível 
-            o que é a esporotricose, como ela se transmite, seus sintomas, prevenção e tratamento.
+            Este site foi elaborado como produto do Programa de Mestrado Profissional em 
+            Saúde Única da Universidade Federal Rural de Pernambuco (PMPSU-UFRPE), com o objetivo 
+            de oferecer informações confiáveis e acessíveis sobre a doença, contribuindo para sua 
+            prevenção, diagnóstico precoce e tratamento adequado.
           </p>
 
           <h2 className="text-3xl font-semibold mt-12 mb-6 text-emerald-900">Nossa Missão</h2>
@@ -49,7 +51,7 @@ export default function About() {
 
         <div className="mt-20 pt-12 border-t border-emerald-200 flex flex-col items-center">
           <p className="flex items-center gap-2 text-emerald-600 mb-8 text-lg">
-            <Heart className="text-rose-500" fill="currentColor" /> Feito com carinho para proteger humanos e animais
+            <Heart className="text-rose-500" fill="currentColor" /> Feito para proteger humanos e animais
           </p>
           
           <div className="flex gap-8 text-emerald-600">

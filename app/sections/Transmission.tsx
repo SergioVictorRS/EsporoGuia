@@ -15,7 +15,7 @@ export function Transmission() {
       repeatDelay: 2.5,
     });
 
-    // 1. Esporos saindo da planta
+    // ====================== 1. ESPOROS DA PLANTA ======================
     tl.fromTo(
       ".spore-plant",
       { opacity: 0, scale: 0.1, y: 30 },
@@ -23,13 +23,7 @@ export function Transmission() {
     )
       .to(
         ".spore-plant",
-        {
-          x: "235px",
-          y: "-72px",
-          duration: 2.4,
-          ease: "power2.inOut",
-          stagger: 0.18,
-        },
+        { x: "235px", y: "-72px", duration: 2.4, ease: "power2.inOut", stagger: 0.18 },
         "-=0.55"
       )
       .to(".spore-plant", { opacity: 0, scale: 0.3, duration: 0.45 }, "-=0.7")
@@ -37,7 +31,7 @@ export function Transmission() {
       // Gato reage
       .to(catRef.current, { rotation: -9, duration: 0.12, repeat: 4, yoyo: true }, "-=1.1")
 
-      // 2. Esporos saindo do gato
+      // ====================== 2. ESPOROS DO GATO ======================
       .fromTo(
         ".spore-cat",
         { opacity: 0, scale: 0.25, x: -25 },
@@ -46,13 +40,7 @@ export function Transmission() {
       )
       .to(
         ".spore-cat",
-        {
-          x: "265px",
-          y: "-85px",
-          duration: 2.45,
-          ease: "power3.out",
-          stagger: 0.16,
-        },
+        { x: "265px", y: "-85px", duration: 2.45, ease: "power3.out", stagger: 0.16 },
         "-=0.75"
       )
       .to(".spore-cat", { scale: 0.5, opacity: 0.35, duration: 0.65 }, "-=0.9")
@@ -62,6 +50,23 @@ export function Transmission() {
         humanRef.current,
         { y: -22, rotation: 3, duration: 0.25, repeat: 2, yoyo: true },
         "-=1.1"
+      )
+
+      // ====================== RESET FINAL (tudo volta ao início) ======================
+      .set(
+        [".spore-plant", ".spore-cat"],
+        { x: 0, y: 0, scale: 0.1, opacity: 0 },
+        "+=0.4"
+      )
+      .set(
+        catRef.current,
+        { rotation: 0, x: 0, y: 0 },
+        "<"
+      )
+      .set(
+        humanRef.current,
+        { rotation: 0, x: 0, y: 0 },
+        "<"
       );
 
     animationRef.current = tl;
@@ -92,7 +97,6 @@ export function Transmission() {
             <div className="flex flex-col items-center relative w-56">
               <div className="relative flex flex-col items-center">
                 <div className="text-[108px] mb-1">🌱</div>
-                
                 <div className="w-48 h-16 bg-gradient-to-b from-amber-900 to-amber-950 rounded-3xl relative -mt-4 shadow-inner">
                   <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-28 h-9 bg-amber-800/70 rounded-2xl" />
                 </div>
@@ -107,7 +111,7 @@ export function Transmission() {
                 {[...Array(6)].map((_, i) => (
                   <div
                     key={i}
-                    className="spore-plant w-4 h-4 bg-gradient-to-br from-amber-400 via-orange-500 to-red-600 rounded-full shadow-md opacity-0"
+                    className="spore-plant w-4 h-4 bg-gradient-to-br from-amber-400 via-orange-500 to-red-600 rounded-full shadow-md"
                     style={{ filter: "blur(0.5px)" }}
                   />
                 ))}
@@ -124,7 +128,7 @@ export function Transmission() {
                 {[...Array(6)].map((_, i) => (
                   <div
                     key={i}
-                    className="spore-cat w-5 h-5 bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-full shadow-lg opacity-0"
+                    className="spore-cat w-5 h-5 bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-full shadow-lg"
                   />
                 ))}
               </div>
