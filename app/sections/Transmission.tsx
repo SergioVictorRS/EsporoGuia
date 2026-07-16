@@ -1,51 +1,71 @@
 // app/sections/Transmission.tsx
 "use client";
 
-import { useEffect, useRef, useState } from "react";   // ← Adicionado useState aqui
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Play, Pause } from "lucide-react";
 
 export function Transmission() {
-  const catRef = useRef<SVGSVGElement>(null);
-  const sporesRef = useRef<HTMLDivElement>(null);
-  const humanRef = useRef<SVGSVGElement>(null);
+  const catRef = useRef<HTMLDivElement>(null);
+  const humanRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<gsap.core.Timeline | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const startAnimation = () => {
-    if (animationRef.current) animationRef.current.restart();
-    setIsPlaying(true);
-  };
-
-  const stopAnimation = () => {
-    if (animationRef.current) animationRef.current.pause();
-    setIsPlaying(false);
-  };
 
   useEffect(() => {
-    // GSAP animation logic
-    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
+    const tl = gsap.timeline({
+      repeat: -1,
+      repeatDelay: 2.5,
+    });
 
-    tl.to(".spore", {
-      opacity: 1,
-      scale: 1.2,
-      duration: 0.6,
-      stagger: 0.2,
-    })
-    .to(".spore", {
-      x: "320px",
-      y: "-80px",
-      duration: 2.2,
-      ease: "power2.inOut",
-      stagger: 0.3,
-    }, "-=0.8")
-    .to(".spore", {
-      scale: 0.6,
-      opacity: 0.7,
-      duration: 0.8,
-    }, "-=0.8");
+    // 1. Esporos saindo da planta
+    tl.fromTo(
+      ".spore-plant",
+      { opacity: 0, scale: 0.1, y: 30 },
+      { opacity: 0.95, scale: 1.15, y: -22, duration: 0.9, stagger: 0.08 }
+    )
+      .to(
+        ".spore-plant",
+        {
+          x: "235px",
+          y: "-72px",
+          duration: 2.4,
+          ease: "power2.inOut",
+          stagger: 0.18,
+        },
+        "-=0.55"
+      )
+      .to(".spore-plant", { opacity: 0, scale: 0.3, duration: 0.45 }, "-=0.7")
+
+      // Gato reage
+      .to(catRef.current, { rotation: -9, duration: 0.12, repeat: 4, yoyo: true }, "-=1.1")
+
+      // 2. Esporos saindo do gato
+      .fromTo(
+        ".spore-cat",
+        { opacity: 0, scale: 0.25, x: -25 },
+        { opacity: 1, scale: 1.3, x: 0, duration: 0.85, stagger: 0.09 },
+        "-=0.6"
+      )
+      .to(
+        ".spore-cat",
+        {
+          x: "265px",
+          y: "-85px",
+          duration: 2.45,
+          ease: "power3.out",
+          stagger: 0.16,
+        },
+        "-=0.75"
+      )
+      .to(".spore-cat", { scale: 0.5, opacity: 0.35, duration: 0.65 }, "-=0.9")
+
+      // Humano reage
+      .to(
+        humanRef.current,
+        { y: -22, rotation: 3, duration: 0.25, repeat: 2, yoyo: true },
+        "-=1.1"
+      );
 
     animationRef.current = tl;
+    tl.play();
 
     return () => {
       tl.kill();
@@ -60,55 +80,67 @@ export function Transmission() {
             Como se transmite?
           </h2>
           <p className="text-xl text-emerald-700 max-w-2xl mx-auto">
-            A principal forma de transmissão ocorre através de arranhões ou mordidas de gatos infectados.
+            O fungo vive no solo e em plantas. Gatos se infectam ao arranhar o solo ou caçar. 
+            A principal forma de transmissão para humanos é por arranhões ou mordidas de gatos infectados.
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-xl p-10 md:p-16 relative">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-16 relative">
-            
-            <div className="flex flex-col items-center">
-              <div className="text-8xl mb-4">🐱</div>
-              <p className="font-semibold text-emerald-800">Gato Infectado</p>
-            </div>
+        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-16 relative overflow-hidden">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 relative">
 
-            <div ref={sporesRef} className="relative flex-1 h-40 hidden md:block">
-              <svg width="100%" height="160" className="overflow-visible">
-                <line 
-                  x1="10%" y1="80" 
-                  x2="90%" y2="80" 
-                  stroke="#d97706" 
-                  strokeWidth="3" 
-                  strokeDasharray="8 6"
-                />
-              </svg>
+            {/* Solo + Planta */}
+            <div className="flex flex-col items-center relative w-56">
+              <div className="relative flex flex-col items-center">
+                <div className="text-[108px] mb-1">🌱</div>
+                
+                <div className="w-48 h-16 bg-gradient-to-b from-amber-900 to-amber-950 rounded-3xl relative -mt-4 shadow-inner">
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-28 h-9 bg-amber-800/70 rounded-2xl" />
+                </div>
+              </div>
 
-              <div className="absolute top-1/2 left-1/4 -translate-y-1/2 flex gap-6">
-                {[...Array(5)].map((_, i) => (
-                  <div 
+              <p className="font-semibold text-emerald-800 mt-8 text-center text-sm">
+                Solo e Plantas<br />
+                <span className="font-normal text-emerald-600">(fonte do fungo)</span>
+              </p>
+
+              <div className="absolute top-20 -right-8 flex gap-5">
+                {[...Array(6)].map((_, i) => (
+                  <div
                     key={i}
-                    className="spore w-5 h-5 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full opacity-0 shadow-md"
+                    className="spore-plant w-4 h-4 bg-gradient-to-br from-amber-400 via-orange-500 to-red-600 rounded-full shadow-md opacity-0"
+                    style={{ filter: "blur(0.5px)" }}
                   />
                 ))}
               </div>
             </div>
 
-            <div className="flex flex-col items-center">
-              <div className="text-8xl mb-4">🧍‍♂️</div>
-              <p className="font-semibold text-emerald-800">Humano</p>
+            {/* Gato Infectado */}
+            <div className="flex flex-col items-center relative" ref={catRef}>
+              <div className="text-8xl mb-4 transition-transform">🐱</div>
+              <p className="font-semibold text-emerald-800">Gato Infectado</p>
+              <p className="text-xs text-amber-700 mt-1">Arranhões / Mordidas</p>
+
+              <div className="absolute top-24 left-1/2 flex gap-5 -translate-x-1/2">
+                {[...Array(6)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="spore-cat w-5 h-5 bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-full shadow-lg opacity-0"
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Humano */}
+            <div className="flex flex-col items-center" ref={humanRef}>
+              <div className="text-[170px] mb-2 transition-transform leading-none">🧍‍♂️</div>
+              <p className="font-semibold text-emerald-800 text-lg">Humano</p>
             </div>
           </div>
-
-          <div className="flex justify-center gap-4 mt-12">
-            <button
-              onClick={isPlaying ? stopAnimation : startAnimation}
-              className="flex items-center gap-3 bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-4 rounded-2xl transition-all active:scale-95"
-            >
-              {isPlaying ? <Pause size={24} /> : <Play size={24} />}
-              {isPlaying ? "Pausar Animação" : "Ver Transmissão"}
-            </button>
-          </div>
         </div>
+
+        <p className="text-center text-sm text-emerald-600 mt-8 max-w-md mx-auto">
+          A esporotricose <strong>não se transmite</strong> diretamente de pessoa para pessoa.
+        </p>
       </div>
     </section>
   );

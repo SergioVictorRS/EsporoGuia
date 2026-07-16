@@ -56,6 +56,19 @@ export function Prevention() {
 
   const progress = Math.round((checkedItems.length / preventionTips.length) * 100);
 
+
+  const getProgressMessage = (progress: number) => {
+    if (progress === 0) return "Cuidado!";
+    if (progress <= 17) return "Precisa de mais cuidados!";
+    if (progress <= 33) return "Ainda não é o suficiente!";
+    if (progress <= 50) return "Nada mal!";
+    if (progress <= 67) return "Continue assim!";
+    if (progress <= 83) return "Muito bom!";
+    return "Perfeito!";
+  };
+
+  const progressMessage = getProgressMessage(progress);
+
   return (
     <section id="prevencao" className="py-24 bg-emerald-50">
       <div className="max-w-5xl mx-auto px-6">
@@ -70,10 +83,10 @@ export function Prevention() {
           <p className="text-xl text-emerald-700">Pequenas ações fazem grande diferença</p>
         </div>
 
-        {/* Progress Bar */}
+        {/* Progress Bar com mensagem dinâmica */}
         <div className="max-w-md mx-auto mb-12">
           <div className="flex justify-between text-sm mb-2 text-emerald-700">
-            <span>Seu progresso de proteção</span>
+            <span className="font-medium">{progressMessage}</span>
             <span className="font-semibold">{progress}%</span>
           </div>
           <div className="h-3 bg-white rounded-full overflow-hidden">
@@ -82,10 +95,13 @@ export function Prevention() {
               style={{ width: `${progress}%` }}
             />
           </div>
+          <p className="text-center text-xs text-emerald-600 mt-2">
+            Marque as ações que você já pratica
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {preventionTips.map((tip, index) => (
+          {preventionTips.map((tip) => (
             <div
               key={tip.id}
               onClick={() => toggleCheck(tip.id)}
