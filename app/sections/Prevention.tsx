@@ -4,7 +4,11 @@
 import { useState } from "react";
 import { Check, Shield, Heart } from "lucide-react";
 
-export function Prevention() {
+type PreventionProps = {
+  id?: string;
+};
+
+export function Prevention({ id }: PreventionProps) {
   const [checkedItems, setCheckedItems] = useState<number[]>([]);
 
   const preventionTips = [
@@ -56,7 +60,6 @@ export function Prevention() {
 
   const progress = Math.round((checkedItems.length / preventionTips.length) * 100);
 
-
   const getProgressMessage = (progress: number) => {
     if (progress === 0) return "Cuidado!";
     if (progress <= 17) return "Precisa de mais cuidados!";
@@ -70,7 +73,7 @@ export function Prevention() {
   const progressMessage = getProgressMessage(progress);
 
   return (
-    <section id="prevencao" className="py-24 bg-emerald-50">
+    <section id={id} className="py-24 bg-emerald-50">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-white px-5 py-2 rounded-full mb-6">

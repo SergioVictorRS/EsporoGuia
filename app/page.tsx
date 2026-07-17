@@ -12,21 +12,27 @@ import { Footer } from "./components/Footer";
 import { Environment } from "./sections/Environment"; 
 import { OneHealth } from "./sections/OneHealth";
 import ReadingProgress from "./components/ReadingProgress";
+import { Navbar } from "./components/Navbar";
 
 export default function Home() {
   return (
     <main className="pt-20">
+      <Navbar />
       <ReadingProgress />
+      
       <Hero />
+      
       <WhatIs />
       <Transmission />
       <Symptoms />
       <Diagnosis />
-      <Prevention />
-      <Myths />
-      <Help />
-      <Environment />
-      <OneHealth />
+      <Prevention id="prevencao" />
+      
+      <Myths id="mitos-e-verdades" />
+      <Environment id="meio-ambiente" />
+      <Help id="quando-procurar-ajuda" />
+      
+      <OneHealth id="saude-unica" />
       <Footer />
     </main>
   );

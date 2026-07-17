@@ -26,10 +26,22 @@ export function Transmission() {
         { x: "235px", y: "-72px", duration: 2.4, ease: "power2.inOut", stagger: 0.18 },
         "-=0.55"
       )
-      .to(".spore-plant", { opacity: 0, scale: 0.3, duration: 0.45 }, "-=0.7")
 
-      // Gato reage
-      .to(catRef.current, { rotation: -9, duration: 0.12, repeat: 4, yoyo: true }, "-=1.1")
+      // === BALANÇO DO GATO quando os esporos da planta chegam ===
+      .to(
+        catRef.current,
+        {
+          rotation: 6,
+          x: 8,
+          duration: 0.08,
+          repeat: 7,
+          yoyo: true,
+          ease: "power1.inOut",
+        },
+        "-=1.8" // ajustado para coincidir com a chegada dos esporos
+      )
+
+      .to(".spore-plant", { opacity: 0, scale: 0.3, duration: 0.45 }, "-=0.7")
 
       // ====================== 2. ESPOROS DO GATO ======================
       .fromTo(
@@ -43,16 +55,24 @@ export function Transmission() {
         { x: "265px", y: "-85px", duration: 2.45, ease: "power3.out", stagger: 0.16 },
         "-=0.75"
       )
-      .to(".spore-cat", { scale: 0.5, opacity: 0.35, duration: 0.65 }, "-=0.9")
 
-      // Humano reage
+      // === BALANÇO DO HUMANO quando os esporos do gato chegam ===
       .to(
         humanRef.current,
-        { y: -22, rotation: 3, duration: 0.25, repeat: 2, yoyo: true },
-        "-=1.1"
+        {
+          rotation: -8,
+          x: -10,
+          duration: 0.07,
+          repeat: 8,
+          yoyo: true,
+          ease: "power1.inOut",
+        },
+        "-=1.6" // timing ajustado para a chegada dos esporos do gato
       )
 
-      // ====================== RESET FINAL (tudo volta ao início) ======================
+      .to(".spore-cat", { scale: 0.5, opacity: 0.35, duration: 0.65 }, "-=0.9")
+
+      // ====================== RESET FINAL ======================
       .set(
         [".spore-plant", ".spore-cat"],
         { x: 0, y: 0, scale: 0.1, opacity: 0 },

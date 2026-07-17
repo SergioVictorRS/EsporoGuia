@@ -11,7 +11,11 @@ type Myth = {
   isDangerous: boolean;
 };
 
-export function Myths() {
+type MythsProps = {
+  id?: string;
+};
+
+export function Myths({ id }: MythsProps) {
   const [openCard, setOpenCard] = useState<number | null>(null);
 
   const myths: Myth[] = [
@@ -58,7 +62,7 @@ export function Myths() {
   };
 
   return (
-    <section className="py-24 bg-[#f8f4ed]">
+    <section id={id} className="py-24 bg-[#f8f4ed]">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-2xl mb-6">

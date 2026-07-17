@@ -1,12 +1,16 @@
-// app/sections/Help.tsx (modificado)
+// app/sections/Help.tsx
 "use client";
 
 import { Phone, MapPin, Clock } from "lucide-react";
 import Link from "next/link";
 
-export function Help() {
+type HelpProps = {
+  id?: string;
+};
+
+export function Help({ id }: HelpProps) {
   return (
-    <section className="py-24 bg-emerald-950 text-white">
+    <section id={id} className="py-24 bg-emerald-950 text-white">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold tracking-tight mb-4">

@@ -3,9 +3,13 @@
 
 import { Heart, Users, PawPrint, Globe, Leaf } from "lucide-react";
 
-export function OneHealth() {
+type OneHealthProps = {
+  id?: string;
+};
+
+export function OneHealth({ id }: OneHealthProps) {
   return (
-    <section className="py-24 bg-gradient-to-br from-emerald-950 to-teal-950 text-white relative overflow-hidden">
+    <section id={id} className="py-24 bg-gradient-to-br from-emerald-950 to-teal-950 text-white relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6 text-emerald-400">
@@ -84,7 +88,7 @@ export function OneHealth() {
           </div>
         </div>
 
-        {/* Resto do conteúdo permanece igual (apenas pequenas melhorias visuais) */}
+        {/* Resto do conteúdo permanece igual */}
         <div className="max-w-4xl mx-auto mb-20">
           <h3 className="text-3xl font-semibold text-center mb-8 text-emerald-200">
             Por que a esporotricose é um problema de saúde única?
