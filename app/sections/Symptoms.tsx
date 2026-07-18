@@ -24,80 +24,95 @@ export function Symptoms() {
   ];
 
   return (
-    <section id="sintomas" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold tracking-tight text-emerald-950 mb-4">
+    <section id="sintomas" className="py-16 md:py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-emerald-950 mb-4">
             Sintomas
           </h2>
-          <p className="text-xl text-gray-600">Como a doença se manifesta em gatos e humanos</p>
+          <p className="text-lg md:text-xl text-gray-600 px-2">
+            Como a doença se manifesta em gatos e humanos
+          </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex bg-gray-100 rounded-2xl p-1">
+        <div className="flex justify-center mb-10 md:mb-12">
+          <div className="inline-flex bg-gray-100 rounded-2xl p-1.5 w-full max-w-xs">
             <button
               onClick={() => setActiveTab("cat")}
-              className={`flex items-center gap-3 px-8 py-4 rounded-xl font-medium transition-all ${
-                activeTab === "cat" 
-                  ? "bg-white shadow text-emerald-700" 
+              className={`flex-1 flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl font-medium transition-all text-sm sm:text-base ${
+                activeTab === "cat"
+                  ? "bg-white shadow text-emerald-700"
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              <Cat size={24} />
+              <Cat size={22} />
               Em Gatos
             </button>
-            
+
             <button
               onClick={() => setActiveTab("human")}
-              className={`flex items-center gap-3 px-8 py-4 rounded-xl font-medium transition-all ${
-                activeTab === "human" 
-                  ? "bg-white shadow text-emerald-700" 
+              className={`flex-1 flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl font-medium transition-all text-sm sm:text-base ${
+                activeTab === "human"
+                  ? "bg-white shadow text-emerald-700"
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              <User size={24} />
+              <User size={22} />
               Em Humanos
             </button>
           </div>
         </div>
 
         {/* Conteúdo */}
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-10">
-            {/* Coluna da esquerda - Imagem + Título */}
-            <div className="flex flex-col items-center text-center">
-              <div className="text-[180px] mb-6 opacity-90">
-                {activeTab === "cat" ? "🐱" : "🧍‍♂️"}
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+            {/* Coluna da Imagem - Quadro Melhorado */}
+            <div className="flex flex-col items-center text-center md:sticky md:top-8">
+              <div className="relative w-full max-w-[310px] sm:max-w-[350px] md:max-w-[320px] overflow-hidden rounded-3xl shadow-2xl border border-emerald-100 bg-white">
+                <img
+                  src={
+                    activeTab === "cat"
+                      ? "/attachments/esporogato.png"
+                      : "/attachments/esporohumano.png"
+                  }
+                  alt={
+                    activeTab === "cat"
+                      ? "Ilustração de gato com esporotricose"
+                      : "Ilustração de lesões de esporotricose em braço humano"
+                  }
+                  className="w-full h-auto object-contain p-3 sm:p-6 transition-transform duration-700 hover:scale-[1.03]"
+                />
               </div>
-              <h3 className="text-3xl font-semibold mb-4">
+
+              <h3 className="text-2xl md:text-3xl font-semibold mt-8 mb-3">
                 {activeTab === "cat" ? "Sintomas em Gatos" : "Sintomas em Humanos"}
               </h3>
-              <p className="text-emerald-600 font-medium">
-                {activeTab === "cat" 
-                  ? "Mais comum em machos não castrados" 
+              <p className="text-emerald-600 font-medium text-sm md:text-base">
+                {activeTab === "cat"
+                  ? "Mais comum em machos não castrados"
                   : "Mais comum em pessoas que lidam com gatos"}
               </p>
             </div>
 
-            {/* Lista de sintomas */}
-            <div className="space-y-4">
+            {/* Lista de Sintomas */}
+            <div className="space-y-4 md:space-y-5">
               {(activeTab === "cat" ? catSymptoms : humanSymptoms).map((symptom, index) => (
-                <div 
+                <div
                   key={index}
-                  className="card-breathe bg-emerald-50 border border-emerald-100 rounded-2xl p-6 flex gap-4 hover:border-emerald-300 transition-all"
+                  className="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 md:p-6 flex gap-4 hover:border-emerald-300 transition-all hover:shadow-md"
                 >
-                  <div className="w-8 h-8 rounded-full bg-emerald-100 flex-shrink-0 flex items-center justify-center text-emerald-600 font-bold mt-0.5">
+                  <div className="w-8 h-8 rounded-full bg-emerald-100 flex-shrink-0 flex items-center justify-center text-emerald-600 font-bold text-lg mt-0.5">
                     {index + 1}
                   </div>
-                  <p className="text-lg leading-relaxed text-gray-700">{symptom}</p>
+                  <p className="text-[17px] leading-relaxed text-gray-700">{symptom}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="mt-16 text-center text-sm text-gray-500">
+        <div className="mt-14 md:mt-16 text-center text-sm md:text-base text-gray-500 px-4">
           ⚠️ Importante: Em ambos os casos, quanto mais cedo o diagnóstico, melhor o tratamento.
         </div>
       </div>

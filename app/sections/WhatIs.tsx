@@ -25,8 +25,8 @@ export function WhatIs() {
 
             <p>
               A esporotricose é uma doença que afeta tanto animais quanto seres humanos 
-              e, por isso, deve ser compreendida a partir da abordagem da <strong>Saúde Única</strong> 
-               (One Health). Essa visão integrada considera a estreita conexão entre a 
+              e, por isso, deve ser compreendida a partir da abordagem da <strong>Saúde Única </strong> 
+                (One Health). Essa visão integrada considera a estreita conexão entre a 
               saúde humana, a saúde animal e a saúde ambiental, reconhecendo que o 
               bem-estar de um afeta diretamente o dos outros.
             </p>
